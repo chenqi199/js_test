@@ -9,20 +9,84 @@
 </body>
 <script src="../js/jqueryplugins/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
-    $.extend({
-        log: function(message) {
-            var now = new Date(),
-                y = now.getFullYear(),
-                m = now.getMonth() + 1, //！JavaScript中月分是从0开始的
-                d = now.getDate(),
-                h = now.getHours(),
-                min = now.getMinutes(),
-                s = now.getSeconds(),
-                time = y + '/' + m + '/' + d + ' ' + h + ':' + min + ':' + s;
-            console.log(time + ' My App: ' + message);
+//    $.extend({
+//        log: function (message) {
+//            var now = new Date(),
+//                y = now.getFullYear(),
+//                m = now.getMonth() + 1, //！JavaScript中月分是从0开始的
+//                d = now.getDate(),
+//                h = now.getHours(),
+//                min = now.getMinutes(),
+//                s = now.getSeconds(),
+//                time = y + '/' + m + '/' + d + ' ' + h + ':' + min + ':' + s;
+//            console.log(time + ' My App: ' + message);
+//        }
+//    });
+//    $.log('initializing...'); //调用
+//    Aarray.isArray([]);
+</script>
+<script>
+    !(function (window, $, undefined) {
+
+        var messageModal = function (opt) {
+            var defaults = {
+                title: '查看详情',
+                bodyText: '....',
+                titleCss: {"fontSize": "16px", "text-align": "center"},
+                bodyCss: {"fontSize": "12px", "text-align": "center"}
+            }
+            this.options = $.extend({}, defaults, opt);
+
+            this.pbody = $(parent.body);
+
         }
-    });
-    $.log('initializing...'); //调用
-    Aarray.isArray([]);
+
+        var opt = messageModal;
+        console.log(opt);
+        console.log(typeof opt);
+        var html = {
+            patentd: '<div class="modal message-modal-see" id="myModal"  style="display: block;background:rgba(0,0,0,0.2);"></div>',
+            modalDialog: '<div class="modal-dialog" role="document"></div>',
+            modalContent: '<div class="modal-content"></div>',
+            modalHead: '<div class="modal-header"></div>',
+            headBtn: '<button type="button" class="close close-modal" ><span aria-hidden="true">&times;</span></button>',
+            headTitle: '<h4 class="modal-title" id="myModalLabel" style="text-align: center">视频开通详情</h4>',
+            modalBody: ' <div class="modal-body"></div>',
+            modalFooter: ' <div class="modal-footer"></div>',
+            footerCbtn: ' <button type="button" class="btn btn-default close-modal" data-dismiss="modal">关闭</button>',
+
+        }
+        var fatherBody = $(window.top.document.body);
+        messageModal.prototype = {
+            createModal: function (ele) {
+                $(html.headTitle).text(this.options.title).css(this.options.titleCss);
+                var mobody = $(html.modalBody).css(this.options.bodyCss).append(this.options.bodyText);
+                var content = $(html.modalContent).append(
+                    $(html.modalHead).append(html.headBtn).append($(html.headTitle))
+                ).append(
+                    mobody
+                ).append(
+                    $(html.modalFooter).append(html.footerCbtn)
+                ).css('margin-top', '60%')
+
+                var modal = $(html.patentd).append(
+                    $(html.modalDialog).append(
+                        content
+                    )
+                )
+
+                modal.appendTo(fatherBody)
+            },
+            removeModal: function () {
+                this.remove()
+            },
+        }
+
+        $(parent.document).on('click', '.close-modal', function () {
+            $(parent.document).find('.message-modal-see').remove()
+        });
+        window.messageModal = messageModal
+    }(window, jQuery));
+
 </script>
 </html>

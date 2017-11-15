@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>you don't know javascript</title>
+</head>
+<body>
+you don't know javaScript 第一卷m y
+
+</body>
+<script type="text/javascript">
+//    this is you dont know javascript charset one
+
+var log = console.log.bind(console);
+//function foo() {
+//
+//    "use strict";
+////   return function bar() {
+////        console.log('hahahahh');
+////    }
+//
+//    a=1;
+//}
+//-------------------
+//var fn = function bb() {
+//    log('varible');
+//    return 'aa';
+//}
+//-----------------
+//闭包
+//function makeAdder(x) {
+//    function add(y){
+//        return y+x;
+//    }
+//
+//
+//    return add;
+//}
+//var personOne = makeAdder(1),
+//    personTen = makeAdder(10);
+//log(personOne(11));
+//log(personTen(11));
+//log(personOne(1441));
+//log(personTen(11111));
+//----------------------------------
+
+//    function foo(a) {
+//        return a+b;
+//    }
+//
+// var c=foo(2);
+//    log(c); b = 2;
+//
+    //---------------------------------------
+
+//var a =2;
+//(function IIFE(def) {
+//    def(window)
+//})(function def(global) {
+//    var a =3;
+//    console.log(a);
+//    console.log(global.a);
+//})
+
+//for (var i=0;i<=5;i++){
+//    (function myeach(j) {
+//        setTimeout(function () {
+//
+//            console.log(j)
+//        },j*100)
+//    })(i);
+//
+//}
+
+
+(function foo(b) {
+        var a = 2;
+        b();
+
+
+//        bar();
+
+    })( function bar() {
+    log(a);
+
+
+})
+//    foo();
+
+</script>
+</html>
