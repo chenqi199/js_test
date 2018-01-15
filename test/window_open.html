@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        function open_win() {
+            var urls = ['http://www.microsoft.com/', 'http://www.w3school.com.cn/', 'http://www.baidu.com'];
+            for (var i = 0; i < urls.length; i++) {
+            (function (url,i) {
+                   var a_target = $('<a>').attr({
+                       'href':url,
+                       'target':'_blank',
+                       'id':i+'son_window'
+                   });
+                   $('body').append(a_target);
+                   a_target[0].click();
+                   a_target.remove();
+               })(urls[i],i)
+
+            }
+        }
+
+        var urls = ['http://www.microsoft.com/', 'http://www.w3school.com.cn/', 'http://www.baidu.com'];
+        for (var i = 0; i < urls.length; i++) {
+            (function (url,i) {
+                var a_target = $('<a>').attr({
+                    'href':url,
+                    'target':'_blank',
+                    'id':i+'son_window'
+                });
+                $('body').append(a_target);
+                a_target.on('click',function () {
+                    var win = window.open('');
+
+                    ajax().done(function() {
+                        // 重定向到目标页面
+                        win.location.href = url;
+                    });
+                });
+                a_target.remove();
+            })(urls[i],i)
+
+        }
+
+    </script>
+</head>
+
+<body>
+<form>
+    <input type=button value="打开窗口" onclick="open_win()">
+</form>
+</body>
+
+</html>

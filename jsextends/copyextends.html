@@ -5,7 +5,40 @@
     <title>js_copy_extends</title>
 </head>
 <body>
+<form name="test" action="">
+    <input type="text" id="input_test" name="input_test" value=""/>
+</form>
+<script src="../js/jqueryplugins/jquery-1.9.1.min.js"></script>
+
+
+
 <script type="text/javascript">
+    $('#input_test').on('input',function () {
+       var val = $(this).val();
+       console.log(val);
+       if(val.length>5){
+           alert('超长') ;
+       }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     function Amlimal(){
         this.name= name || 'cat';
         this.sleep = function(){
