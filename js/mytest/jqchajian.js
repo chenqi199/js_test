@@ -10,3 +10,5 @@ $.extend({
 })
 $.sayHello(); //调用
 $.sayHello('Wayou'); //带参调用
+
+console.log("this is git conflict test");
